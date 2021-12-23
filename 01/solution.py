@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from open_input import get_input
 import toolz
+from open_input import get_input
 
 input_str: str = get_input(__file__)
 

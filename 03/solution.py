@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from collections import Counter
 
+from answer import Answer
 from open_input import get_input
 
 input_str = get_input(__file__)
@@ -64,8 +65,11 @@ counter = get_count(readings, readings_len)
 gamma = get_gamma(counter)
 epsilon = get_epsilon(counter)
 
-print("part 1:", gamma * epsilon)
+answer = Answer()
+answer.part1 = gamma * epsilon
 
 oxygen_rating = get_oxygen_rating(readings, readings_len)
 co2_rating = get_co2_rating(readings, readings_len)
-print("part 2:", co2_rating * oxygen_rating)
+answer.part2 = co2_rating * oxygen_rating
+
+print(answer)

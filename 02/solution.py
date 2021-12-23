@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-from open_input import get_input
 from dataclasses import dataclass
+
+from open_input import get_input
 
 input_str = get_input(__file__)
 
@@ -47,4 +48,3 @@ print("part 1:", b1.result())
 
 b2 = apply_commands(commands, aim=True)
 print("part 2:", b2.result())
-
