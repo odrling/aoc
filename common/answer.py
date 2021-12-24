@@ -3,8 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class Answer:
-    part1: int | None = None
-    part2: int | None = None
+    part1: int | str | None = None
+    part2: int | str | None = None
 
     def __str__(self):
         answers = []
