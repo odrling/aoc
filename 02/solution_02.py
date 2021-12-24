@@ -20,25 +20,34 @@ class Boat:
     def result(self) -> int:
         return self.depth * self.horizontal_position
 
+    def down(self, val: int, aim: bool = False):
+        if aim:
+            self.aim += val
+        else:
+            self.depth += val
+
+    def up(self, val: int, aim: bool = False):
+        if aim:
+            self.aim -= val
+        else:
+            self.depth -= val
+
+    def forward(self, val: int, aim: bool = False):
+        self.horizontal_position += val
+        if aim:
+            self.depth += (self.aim * val)
+
 
 def apply_commands(commands: cmd_type, aim: bool = False) -> Boat:
     boat = Boat()
+    cmd_handler = {
+        'up': boat.up,
+        'down': boat.down,
+        'forward': boat.forward
+    }
     for cmd, val in commands:
-        match cmd:
-            case "down":
-                if aim:
-                    boat.aim += val
-                else:
-                    boat.depth += val
-            case "up":
-                if aim:
-                    boat.aim -= val
-                else:
-                    boat.depth -= val
-            case "forward":
-                boat.horizontal_position += val
-                if aim:
-                    boat.depth += (boat.aim * val)
+        handler = cmd_handler[cmd]
+        handler(val, aim)
 
     return boat
 
